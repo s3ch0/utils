@@ -1,0 +1,125 @@
+snippet l "Link of URL"
+<a href="$1"${2: class="${3:link}"}> $0 </a>
+endsnippet
+
+snippet f "Font style"
+<font color="red" face=Monaco size=3> <++> </font>$0
+endsnippet
+
+snippet font "Font style"
+<font color="<++>" face=Monaco size=3> <++> </font>$0
+endsnippet
+
+
+snippet b "box style"
+<div style="border:2px solid #fff;color:blue; text-align:center" class="box"></div>
+endsnippet
+
+snippet '(?<!\\)([0-9])k' "keybord style" r
+$1`!p
+x=match.group(1)
+cell = '<kbd class="keybord"> <++> </kbd>'
+list1 = []
+for i in range(int(x)):
+	list1.append(cell)	
+list1[-1] += '&ensp;<++>'
+out=" + ".join(list1)
+snip.rv=out
+`$0
+endsnippet
+
+snippet p "p style"
+<p class="paragraph"> $0 </p>
+endsnippet
+
+# 根据用户输入新建一个Markdown格式的表格
+snippet '(?<!\\)([0-9])([0-9])tb' "new table" r
+$1`!p 
+x=match.group(1)
+y=match.group(2)
+row1=""
+row2="" 
+for i in range(int(x)):
+    row1+="| <++> "
+    row2+="|:-:"
+row1+=" |\n"
+row2+=" |\n"
+out=row1+row2+int(y)*row1
+snip.rv=out
+`$0
+endsnippet
+
+snippet mb "markdown style"
+**$0** <++>
+endsnippet
+
+snippet mi "itlic style"
+*$0* <++>
+endsnippet
+
+snippet mbi "bold and itlic style"
+***$0*** <++>
+endsnippet
+
+snippet h "HeightLight style"
+==$0== <++>
+endsnippet
+
+snippet link "Picture Link"
+![<++>]($0) 
+endsnippet
+
+
+
+snippet cb "code block"
+\`\`\`bash$0
+<++>
+\`\`\`
+<++>
+endsnippet
+
+snippet cp "code block"
+\`\`\`python$0
+<++>
+\`\`\`
+<++>
+endsnippet
+
+
+snippet cc "code block"
+\`\`\`c++$0
+<++>
+\`\`\`
+<++>
+endsnippet
+
+
+snippet cg "code block"
+\`\`\`go$0
+<++>
+\`\`\`
+<++>
+endsnippet
+
+snippet code "code block"
+\`\`\`$0
+<++>
+\`\`\`
+<++>
+endsnippet
+
+
+
+
+
+snippet gif "gif img link"
+
+<img alt="Gif" src="<++>" width="60%" />
+
+endsnippet
+
+
+snippet oss "oss img link"
+![](http://zhouhao-blog.oss-cn-shanghai.aliyuncs.com/blog_img/)
+
+endsnippet
