@@ -18,6 +18,15 @@ import os
 import sys
 
 
+def is_img(link: str):
+    '''
+    this function will check the link weather or not a picture
+   
+
+    '''
+    pass
+
+
 def cprint(color: str, *args, **kwargs):
     color = color.upper()
     ANSI_CODE: dict[str, str] = {

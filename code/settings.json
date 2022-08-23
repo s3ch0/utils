@@ -1,0 +1,229 @@
+{
+	"workbench.colorTheme": "Atom One Light",
+	"editor.fontFamily": "Fira Code",
+	"editor.fontLigatures": true,
+	"editor.fontWeight": "normal",
+	"security.workspace.trust.untrustedFiles": "open",
+	"editor.fontSize": 14,
+	"editor.suggest.snippetsPreventQuickSuggestions": false,
+
+	"vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.defaultIM": "1",
+    "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/bin/fcitx-remote",
+    "vim.autoSwitchInputMethod.switchIMCmd": "/usr/bin/fcitx-remote -t {im}",
+
+	"vim.easymotion": true,
+	"vim.incsearch": true,
+	"vim.useSystemClipboard": true,
+	"vim.useCtrlKeys": true,
+	
+
+	// "vim.hlsearch": true,
+	// "vim.insertModeKeyBindings": [
+	// 	{
+	// 		"before": ["j", "k"],
+	// 		"after": ["<Esc>"]
+	// 	}
+	// ],
+
+	"vim.visualModeKeyBindings": [
+		{
+			"before": ["K"],
+			"commands": ["lineBreakInsert"],
+			"silent": true
+		},
+		{
+			"before": ["L"],
+			"after": ["$"]
+		},
+
+		{
+			"before": ["H"],
+			"after": ["^"]
+		},
+		{
+			"before": ["J"],
+			"after": ["5", "j"]
+		},
+		{
+			"before": ["K"],
+			"after": ["5", "k"]
+		}
+	],
+
+	"vim.normalModeKeyBindingsNonRecursive": [
+		{
+			"before": ["<leader>", "d"],
+			"after": ["d", "d"]
+		},
+		{
+			"before": ["<leader>", "<leader>"],
+			"after": ["<ESC>", "/","<++>","<CR>","c","4","l"]
+		},
+	
+		{
+			"before": ["<leader>", "<Enter>"],
+			"commands": [":nohl"]
+		},
+		{
+			"before": ["K"],
+			"commands": ["lineBreakInsert"],
+			"silent": true
+		},
+		{
+			"before": ["L"],
+			"after": ["$"]
+		},
+
+		{
+			"before": ["H"],
+			"after": ["^"]
+		},
+		{
+			"before": ["J"],
+			"after": ["5", "j"]
+		},
+		{
+			"before": ["K"],
+			"after": ["5", "k"]
+		},
+		{
+			"before": [";"],
+			"after": [":"]
+		},
+		{
+			"before": ["b", "d"],
+			"commands": [":bdelete"]
+		},
+		{
+			"before": ["b", "l"],
+			"commands": [":bnext"]
+		},
+		{
+			"before": ["b", "h"],
+			"commands": [":bprevious"]
+		},
+		{
+			"before": ["b", "L"],
+			"commands": [":blast"]
+		},
+		{
+			"before": ["b", "H"],
+			"commands": [":bfirst"]
+		},
+		{
+			"before": ["b", "o"],
+			"commands": [":tabnew"]
+		}
+	],
+
+	"vim.leader": "<space>",
+	"vim.handleKeys": {
+		"<C-a>": false,
+		"<C-f>": false
+	},
+	"vim.commandLineModeKeyBindingsNonRecursive": [],
+	"editor.lineNumbers": "on",
+	"terminal.integrated.defaultProfile.linux": "fish",
+	//
+	// StatusBar settings
+	//
+
+	"workbench.colorCustomizations": {
+		"statusBar.background": "#c61ee39a",
+		"statusBar.noFolderBackground": "#753eda92",
+		"statusBar.debuggingBackground": "#15771a",
+		// set the statusBar font color
+		"statusBar.foreground": "#000000",
+		// set the statusBar width
+		"statusBar.width": "100"
+	},
+	"terminal.integrated.fontSize": 15,
+	"scm.inputFontSize": 14,
+	"tabnine.experimentalAutoImports": true,
+	"editor.inlineSuggest.enabled": true,
+
+	"github.copilot.enable": {
+		"*": true,
+		"yaml": false,
+		"plaintext": false,
+		"markdown": false
+	},
+	"security.workspace.trust.enabled": false,
+	"editor.renderWhitespace": "none",
+	"window.titleBarStyle": "custom",
+	"explorer.confirmDelete": false,
+	"terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
+	"workbench.editorAssociations": {
+		"*.pdf": "latex-workshop-pdf-hook"
+	},
+	"[latex]": {
+		"editor.defaultFormatter": "James-Yu.latex-workshop"
+	},
+	"workbench.editor.enablePreview": false,
+
+	// file exclude
+	"files.exclude": {
+		"**/_*": true,
+		"**/*.o": true
+	},
+	"window.dialogStyle": "custom",
+	"debug.toolBarLocation": "docked",
+	"window.titleBarStyle": "custom",
+	"translation.provider": "youdao",
+	"translation.youdao.appId": "3ed3e42f7293354f",
+	"translation.youdao.appKey": "z2R7vOiULhoDygBUCblpDGAu1snLHq0y",
+	"editor.tabSize": 4,
+	"todohighlight.exclude": [
+	
+		"**/node_modules/**",
+		"**/bower_components/**",
+		"**/dist/**",
+		"**/build/**",
+		"**/.vscode/**",
+		"**/.github/**",
+		"**/_output/**",
+		"**/*.min.*",
+		"**/*.map",
+		"**/.next/**"
+	],
+	"todohighlight.keywords": [
+        "DEBUG:",
+        "REVIEW:",
+        {
+            "text": "NOTE:",
+            "color": "#ff0000",
+            "backgroundColor": "yellow",
+            "overviewRulerColor": "grey"
+        },
+        {
+            "text": "HACK:",
+            "color": "#000",
+            "isWholeLine": false,
+        },
+        {
+            "text": "TODO:",
+            "color": "red",
+            "border": "1px solid red",
+            "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+            "backgroundColor": "rgba(0,0,0,.2)",
+            //other styling properties goes here ... 
+        }
+	],
+	"workbench.iconTheme": "material-icon-theme",
+	"[markdown]": {
+		"editor.defaultFormatter": "yzhang.markdown-all-in-one",
+		"editor.quickSuggestions": {
+			"comments": "on",
+			"strings": "on",
+			"other": "on"
+		}
+	},
+	"workbench.activityBar.visible": false,
+	"editor.minimap.enabled": false,
+	"vsicons.dontShowNewVersionMessage": true,
+	"editor.experimental.stickyScroll.enabled": true,
+	"window.zoomLevel": 2,
+
+}
+
