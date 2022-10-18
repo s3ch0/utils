@@ -18,6 +18,10 @@ def insertdata():
     pass
 
 
+def randomized():
+    pass
+
+
 #  image = Image.new()
 if __name__ == '__main__':
 
