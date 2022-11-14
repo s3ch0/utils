@@ -1,5 +1,8 @@
 #!/usr/bin/python
 '''
+@auther: zhouhaobusy
+@website: www.zhouhaobusy.com
+
 This simple python file will help you to crawl the link in your markdown file 
 you can use follow command in you shell to gain the link of the images
 ` cat mechine5.md | grep http://zhouhao-blog.oss | cut -d'(' -f2 | cut -d')' -f1 > link5.txt `
@@ -7,9 +10,6 @@ then you can use this file to save the img follow the link to a folder
 
 ` python ./pull.py link_file dst_folder `
 then all the img will save to the dst_folder
-@auther: zhouhaobusy
-@website: www.zhouhaobusy.com
-
 '''
 
 from typing import Union
@@ -18,16 +18,8 @@ import os
 import sys
 
 
-def is_img(link: str):
-    '''
-    this function will check the link weather or not a picture
-   
-
-    '''
-    pass
-
-
 def cprint(color: str, *args, **kwargs):
+    # colorful print
     color = color.upper()
     ANSI_CODE: dict[str, str] = {
 
@@ -98,13 +90,14 @@ def _create_folder(dir_name: str) -> int:
         return 1
 
 
-def _file_suffix(link: str) -> Union[None, str]:
+def _file_prefix(link: str) -> Union[None, str]:
+    # check the file prefix
     if (link.startswith('http')):
         res = link.split('/')[-1]
         return res.strip()
     else:
         cprint('YELLOW', "This string:{} is not a valid link".format(link))
-        exit(1)
+        return None
 
 
 def gain_link(file_name: str) -> list:
@@ -118,29 +111,38 @@ def gain_link(file_name: str) -> list:
 
 
 def pull_img(link_list: list, dir_name: str) ->...:
-    # some bug in this maybe the file name eq
+    # ! some bug in this maybe the file name
+
     img_num = 0
     img_path = os.path.join(os.getcwd(), dir_name)
     err_num = 0
     for link in link_list:
-        cprint('green', "start {}".format(_file_suffix(link)))
-        resp = requests.get(link.strip())
-        if resp.status_code == 200:
-            with open(os.path.join(img_path, _file_suffix(link)), 'wb') as img:
-                img.write(resp.content)
-            img_num += 1
-        else:
+        cprint('green', "start {}".format(_file_prefix(link)))
+        # becaue the link maybe error so i use try except to capture the error
+        try:
+            resp = requests.get(link.strip())
+            if resp.status_code == 200 and _file_prefix(link) != None:
+                with open(os.path.join(img_path, _file_prefix(link)),
+                          'wb') as img:
+                    img.write(resp.content)
+                img_num += 1
+            else:
+                err_num += 1
+                cprint('GREEN', link, end='')
+        except:
             err_num += 1
-            cprint('GREEN', link, end='')
 
-    cprint('CYAN', "Crawl {} img".format(str(img_num)))
+    cprint('CYAN', "Crawled {} images".format(str(img_num)))
     cprint('YELLOW', "Bad link {}".format(str(err_num)))
 
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
-        cprint('cyan', "Usage python ./pull.py link_file dst_folder")
+        cprint('cyan', "Usage: <python ./pull.py link_file dst_folder>")
     else:
+        # create a folder if the directory not exists
         _create_folder(sys.argv[2])
+        # gain the link (no check for this)
         link_list = gain_link(sys.argv[1])
+        # core func
         pull_img(link_list, sys.argv[2])
